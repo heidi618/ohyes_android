@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         edit_cmkg.setText("cm/kg");
         btn_Insert.setEnabled(true);
         btn_Update.setEnabled(false);
-    }
+}
 
     public boolean IsExistID(){
         boolean IsExist = arrayIndex.contains(id);
