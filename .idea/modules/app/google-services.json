@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "629441421742",
+    "firebase_url": "https://mywifi-demo-b3bcd.firebaseio.com",
+    "project_id": "mywifi-demo-b3bcd",
+    "storage_bucket": "mywifi-demo-b3bcd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629441421742:android:e4d8ec59e7f52d43f6a83f",
+        "android_client_info": {
+          "package_name": "com.example.mywifi_demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "629441421742-krhvd1qh66u766fs7c468b84lk6unjji.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mywifi_demo",
+            "certificate_hash": "2311d4d97fd1660edbcef48f497d7533587dd206"
+          }
+        },
+        {
+          "client_id": "629441421742-4hg0o8q02btpbpmk5ca5jlom7rm8fndr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUw-HklVJV0AT9Pm6ZS1NsW-SiHF09LdY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "629441421742-4hg0o8q02btpbpmk5ca5jlom7rm8fndr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
