@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "640348613490",
+    "firebase_url": "https://mywifi-demo-188f2.firebaseio.com",
+    "project_id": "mywifi-demo-188f2",
+    "storage_bucket": "mywifi-demo-188f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640348613490:android:6730a2e3fa38b3707e0beb",
+        "android_client_info": {
+          "package_name": "com.example.mywifi_demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "640348613490-htrbe5ql887erjbjuuugkia7vb584jqh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD49Q-gIW522OAjMFTpqk351-wfCABepzo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "640348613490-htrbe5ql887erjbjuuugkia7vb584jqh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
