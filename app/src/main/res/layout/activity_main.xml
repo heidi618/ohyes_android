@@ -14,6 +14,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="25dp"
         android:autoText="false"
+        android:gravity="center_vertical"
         android:text="환자 개인정보 입력"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
@@ -58,40 +59,41 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="ID"
                 android:inputType="textPersonName"
-                android:text="ID" />
+                android:textAllCaps="false" />
 
             <EditText
                 android:id="@+id/edit_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="NAME" />
+                android:hint="NAME"
+                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/edit_birth"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="BIRTH" />
+                android:hint="BIRTH"
+                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/edit_gender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="GENDER" />
+                android:hint="GENDER"
+                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/edit_cmkg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="CM/KG" />
+                android:hint="CM/KG"
+                android:inputType="textPersonName" />
 
 
         </LinearLayout>

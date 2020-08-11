@@ -149,7 +149,7 @@ public void onClick(View v){
                 cmkg=edit_cmkg.getText().toString();
                 if(!IsExistID()){
                     postFirebaseDatabase(true);
-//                    getFirebaseDatabase();
+                  //  getFirebaseDatabase();
                     setInsertMode();
                 }else{
                     Toast.makeText(MainActivity.this, "이미 존재하는 ID, 사용불가", Toast.LENGTH_SHORT).show();
@@ -171,6 +171,7 @@ public void onClick(View v){
                 edit_id.requestFocus();
                 edit_id.setCursorVisible(true);
                 break;
+
 
         }
 }
