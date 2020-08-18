@@ -99,11 +99,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
     public void setInsertMode() {
-        edit_id.setText("ID");
-        edit_name.setText("NAME");
-        edit_birth.setText("BIRTH");
-        edit_gender.setText("FEMALE/MALE");
-        edit_cmkg.setText("cm/kg");
+       edit_id.setText("");
+        edit_name.setText("");
+        edit_birth.setText("");
+        edit_gender.setText("");
+        edit_cmkg.setText("");
         btn_Insert.setEnabled(true);
         btn_Update.setEnabled(false);
     }
