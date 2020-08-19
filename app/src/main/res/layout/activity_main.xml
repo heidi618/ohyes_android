@@ -77,13 +77,26 @@
                 android:inputType="textPersonName"
                 android:text="BIRTH" />
 
-            <EditText
-                android:id="@+id/edit_gender"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text="GENDER" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <CheckBox
+                    android:id="@+id/check_female"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Female" />
+
+                <CheckBox
+                    android:id="@+id/check_male"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Male" />
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/edit_cmkg"
