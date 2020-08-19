@@ -46,11 +46,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText edit_birth;
     EditText edit_cmkg;
 
-    String id;
-    String name;
-    Long birth;
-    String gender = "";
-    String cmkg;
+   private String id;
+   private String name;
+   private Long birth;
+   private String gender = "";
+   private String cmkg;
 //    String sort = "id";
 
     ArrayAdapter<String> arrayAdapter;

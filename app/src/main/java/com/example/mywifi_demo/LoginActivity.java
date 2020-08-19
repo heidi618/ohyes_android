@@ -1,11 +1,15 @@
 package com.example.mywifi_demo;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +36,13 @@ public class LoginActivity extends AppCompatActivity{
     private static final int RC_SIGN_IN = 9001;
     private SignInButton signInButton;
 
+    private Button mbtn_login;
+    private Button mbtn_join;
+    private EditText mtxt_id;
+    private EditText mtxt_pwd;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +56,46 @@ public class LoginActivity extends AppCompatActivity{
 
 //자동로그인기능
         mAuth = FirebaseAuth.getInstance();
+        //버튼 등록
+        mbtn_join=findViewById(R.id.btn_join);
+        mbtn_login=findViewById(R.id.btn_login);
+        mtxt_id=findViewById(R.id.txt_id);
+        mtxt_pwd=findViewById(R.id.txt_pwd);
+        //가입 버튼이 눌리면
+        mbtn_join.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                //intent함수를 통해 join액티비티 함수를 호출한다.
+                Intent intent = new Intent(LoginActivity.this, JoinActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+        //로그인 버튼이 눌리면
+        mbtn_login.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                String id = mtxt_id.getText().toString().trim();
+                String pwd = mtxt_pwd.getText().toString().trim();
+                mAuth.signInWithEmailAndPassword(id,pwd)
+                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(task.isSuccessful()){
+                                    Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                                    startActivity(intent);
+
+                                }else{
+                                    Toast.makeText(LoginActivity.this,"로그인 오류",Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+
+            }
+        });
  //       if (mAuth.getCurrentUser() != null) {
  //           Intent intent = new Intent(getApplication(), MainActivity.class);
  //           startActivity(intent);
