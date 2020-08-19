@@ -73,7 +73,7 @@ public class JoinActivity extends AppCompatActivity {
                 String name = mName.getText().toString().trim();
                 String birth = mBirth.getText().toString().trim();
                 String phone = mphone.getText().toString().trim();
-
+                String password=mPassword.getText().toString().trim();
                 if(pwd.equals(pwdcheck)) {
                     Log.d(TAG, "등록 버튼 " + id + " , " + pwd);
                     final ProgressDialog mDialog = new ProgressDialog(JoinActivity.this);
@@ -96,7 +96,7 @@ public class JoinActivity extends AppCompatActivity {
                                 String name = mName.getText().toString().trim();
                                 String birth = mBirth.getText().toString().trim();
                                 String phone = mphone.getText().toString().trim();
-
+                                String password= mPassword.getText().toString().trim();
 
 
                                 //해쉬맵 테이블을 파이어베이스 데이터베이스에 저장
@@ -108,7 +108,7 @@ public class JoinActivity extends AppCompatActivity {
                                 hashMap.put("birth",birth);
                                 hashMap.put("phone",phone);
                                 hashMap.put("id",id);
-
+                                hashMap.put("password",password);
 
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                                 DatabaseReference reference = database.getReference("Users");
