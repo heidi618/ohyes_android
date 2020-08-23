@@ -2,16 +2,19 @@ package com.example.mywifi_demo.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.mywifi_demo.FirebasePost;
@@ -28,10 +31,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button sendbt;
-    //    private Button getdbt;
-    private EditText editdt;
-    public String msg;
 
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
@@ -57,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     String gender = "";
     String cmkg;
 //    String sort = "id";
+    LinearLayout container;
 
     ArrayAdapter<String> arrayAdapter;
 
@@ -67,6 +67,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        container=(LinearLayout) findViewById(R.id.container);
+
+        Button btn_list = (Button) findViewById(R.id.btn_list);
+        btn_list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LayoutInflater inflater = (LayoutInflater)
+                        getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                inflater.inflate(R.layout.userlist,container,true);
+            }
+        });
+
 
         imageview = (ImageView) findViewById(R.id.imageView);
         btn_Insert = (Button) findViewById(R.id.btn_insert);
@@ -82,8 +95,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         check_Female.setOnClickListener(this);
         edit_cmkg = (EditText) findViewById(R.id.edit_cmkg);
 
-        btn_Insert.setEnabled(true);
-        btn_Update.setEnabled(false);
+//        btn_Insert.setEnabled(true);
+//        btn_Update.setEnabled(false);
 
 //        initDatabase();
 
@@ -141,9 +154,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             Uri selectedImageUri = data.getData();
             imageview.setImageURI(selectedImageUri);
-
         }
-
     }
 
     ///////////////////////////////////////////////////////////////////////////////
@@ -153,7 +164,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 id = edit_id.getText().toString();
                 name = edit_name.getText().toString();
                 birth = Long.parseLong(edit_birth.getText().toString());
-//                gender = edit_gender.getText().toString();
                 cmkg = edit_cmkg.getText().toString();
                 if (!IsExistID()) {
                     postFirebaseDatabase(true);
@@ -170,7 +180,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 id = edit_id.getText().toString();
                 name = edit_name.getText().toString();
                 birth = Long.parseLong(edit_birth.getText().toString());
-//                gender = edit_gender.getText().toString();
                 cmkg = edit_cmkg.getText().toString();
                 postFirebaseDatabase(true);
                 getFirebaseDatabase();
@@ -235,9 +244,3 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 }
 
-//    private void initDatabase() {
-//        mDatabase = FirebaseDatabase.getInstance();
-//
-//        mReference = mDatabase.getReference("log");
-//        mReference.child("log").setValue("check");
-//   }
