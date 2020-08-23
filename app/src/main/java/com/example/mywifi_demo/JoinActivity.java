@@ -12,13 +12,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -26,10 +30,93 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class JoinActivity extends AppCompatActivity {
-    private static final String TAG = "RegisterActivity";
-    EditText mID,mEmail, mPassword, mPasswordcheck, mName,mBirth,mphone;
-    Button mjoinjoinBtn;
-    private FirebaseAuth firebaseAuth;
+    private static FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
+    private static FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
+    private TextView mTxtId;
+    private EditText   mName,mBirth,mphone;
+    private Button mjoinjoinBtn;
+    private String email;
+    private String IdToken;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_join);
+
+        Intent intent = getIntent();
+        IdToken = intent.getStringExtra("tokenId");
+        email = intent.getStringExtra("email");
+
+        mTxtId = findViewById(R.id.txtId);
+
+        mName = findViewById(R.id.txt_name);
+        mBirth = findViewById(R.id.txt_birth);
+        mphone = findViewById(R.id.txt_phone);
+        mjoinjoinBtn = findViewById(R.id.btn_join_join);
+
+        mTxtId.setText(email);
+
+        mjoinjoinBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                joinProcess();
+            }
+        });
+
+    } //end onCreate()
+
+    //회원가입 처리
+    private void joinProcess() {
+        MemberBean memberBean = new MemberBean();
+        //데이터베이스에 저장한다.
+        memberBean.memId = Utils.getUserIdFromUUID(email);
+        memberBean.isAdmin = false;
+        memberBean.memName = mName.getText().toString();
+        memberBean.membirth = mBirth.getText().toString();
+        memberBean.memphone = mphone.getText().toString();
+
+        uploadMember(memberBean);
+    }
+
+    public void uploadMember(MemberBean memberBean){
+        //Firebase 데이터베이스에 메모를 등록한다.
+        DatabaseReference dbRef = mFirebaseDatabase.getReference();
+        dbRef.child("Users").child( memberBean.memId ).setValue(memberBean);
+        //파이어 베이스 인증
+        firebaseAuthWithGoogle(IdToken);
+    }
+
+    private void firebaseAuthWithGoogle(String idToken){
+        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
+        mFirebaseAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    //Toast.makeText(getBaseContext(), "Firebase 로그인 성공",Toast.LENGTH_LONG).show();
+
+                    goRealUserMainActivity();
+                }else{
+                    Toast.makeText(getBaseContext(), "Firebase 로그인 실패",
+                            Toast.LENGTH_LONG).show();
+                    Log.w("Test","인증실패: "+task.getException());
+                }
+            }
+        });
+    }  //end firebaseAuthWithGoogle()
+
+
+    private void goRealUserMainActivity(){
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+        finish();
+    }  // end goMainActivity (User activity)
+
+}
+
+   /* private static final String TAG = "RegisterActivity";
+    private EditText mID, mPassword, mPasswordcheck, mName,mBirth,mphone;
+    private Button mjoinjoinBtn;
+    public static FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +131,10 @@ public class JoinActivity extends AppCompatActivity {
 
         //파이어베이스 접근 설정
         // user = firebaseAuth.getCurrentUser();
-        firebaseAuth =  FirebaseAuth.getInstance();
+        mAuth =  FirebaseAuth.getInstance();
         //firebaseDatabase = FirebaseDatabase.getInstance().getReference();
 
         mID = findViewById(R.id.txt_id);
-        mEmail = findViewById(R.id.txt_email);
         mPassword = findViewById(R.id.txt_pass);
         mPasswordcheck = findViewById(R.id.txt_passck);
         mName = findViewById(R.id.txt_name);
@@ -69,11 +155,7 @@ public class JoinActivity extends AppCompatActivity {
                 final String id = mID.getText().toString().trim();
                 String pwd = mPassword.getText().toString().trim();
                 String pwdcheck = mPasswordcheck.getText().toString().trim();
-                String email = mEmail.getText().toString().trim();
-                String name = mName.getText().toString().trim();
-                String birth = mBirth.getText().toString().trim();
-                String phone = mphone.getText().toString().trim();
-                String password=mPassword.getText().toString().trim();
+
                 if(pwd.equals(pwdcheck)) {
                     Log.d(TAG, "등록 버튼 " + id + " , " + pwd);
                     final ProgressDialog mDialog = new ProgressDialog(JoinActivity.this);
@@ -81,18 +163,18 @@ public class JoinActivity extends AppCompatActivity {
                     mDialog.show();
 
                     //파이어베이스에 신규계정 등록하기
-                    firebaseAuth.createUserWithEmailAndPassword(id, pwd).addOnCompleteListener(JoinActivity.this, new OnCompleteListener<AuthResult>() {
+                    mAuth.createUserWithEmailAndPassword(id, pwd).addOnCompleteListener(JoinActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
                             //가입 성공시
-                            //if (task.isSuccessful()) {
+                            if (task.isSuccessful()) {
                                 mDialog.dismiss();
 
-                                FirebaseUser user = firebaseAuth.getCurrentUser();
+                                FirebaseUser user = mAuth.getCurrentUser();
                                 String id = mID.getText().toString().trim();
                                 String email = user.getEmail();
-                                String uid = user.getUid();
+                               // String uid = user.getUid();
                                 String name = mName.getText().toString().trim();
                                 String birth = mBirth.getText().toString().trim();
                                 String phone = mphone.getText().toString().trim();
@@ -121,12 +203,12 @@ public class JoinActivity extends AppCompatActivity {
                                 finish();
                                 Toast.makeText(JoinActivity.this, "회원가입에 성공하셨습니다.", Toast.LENGTH_SHORT).show();
 
-                           /* } else {
+                            } else {
                                 mDialog.dismiss();
                                 Toast.makeText(JoinActivity.this, "이미 존재하는 아이디 입니다.", Toast.LENGTH_SHORT).show();
                                 return;  //해당 메소드 진행을 멈추고 빠져나감.
 
-                            }*/
+                            }
 
                         }
                     });
@@ -146,4 +228,4 @@ public class JoinActivity extends AppCompatActivity {
         onBackPressed();; // 뒤로가기 버튼이 눌렸을시
         return super.onSupportNavigateUp(); // 뒤로가기 버튼
     }
-}
+}*/
