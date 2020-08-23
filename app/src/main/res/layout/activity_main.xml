@@ -14,6 +14,10 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="25dp"
         android:autoText="false"
+<<<<<<< HEAD
+=======
+        android:gravity="center_vertical"
+>>>>>>> 76f25a2e7766d027384401fa1a43e140e4638601
         android:text="환자 개인정보 입력"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
@@ -59,7 +63,12 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="ID"
+<<<<<<< HEAD
                 android:inputType="textPersonName" />
+=======
+                android:inputType="textPersonName"
+                android:textAllCaps="false" />
+>>>>>>> 76f25a2e7766d027384401fa1a43e140e4638601
 
             <EditText
                 android:id="@+id/edit_name"

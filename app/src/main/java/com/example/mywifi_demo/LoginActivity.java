@@ -1,15 +1,23 @@
 package com.example.mywifi_demo;
 
+<<<<<<< HEAD
 import android.app.Activity;
+=======
+>>>>>>> 76f25a2e7766d027384401fa1a43e140e4638601
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+<<<<<<< HEAD
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+=======
+import android.widget.ImageView;
+import android.widget.TextView;
+>>>>>>> 76f25a2e7766d027384401fa1a43e140e4638601
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,6 +44,7 @@ public class LoginActivity extends AppCompatActivity{
     private static final int RC_SIGN_IN = 9001;
     private SignInButton signInButton;
 
+<<<<<<< HEAD
     private Button mbtn_login;
     private Button mbtn_join;
     private EditText mtxt_id;
@@ -43,6 +52,8 @@ public class LoginActivity extends AppCompatActivity{
 
 
 
+=======
+>>>>>>> 76f25a2e7766d027384401fa1a43e140e4638601
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +67,7 @@ public class LoginActivity extends AppCompatActivity{
 
 //자동로그인기능
         mAuth = FirebaseAuth.getInstance();
+<<<<<<< HEAD
         //버튼 등록
         mbtn_join=findViewById(R.id.btn_join);
         mbtn_login=findViewById(R.id.btn_login);
@@ -96,6 +108,8 @@ public class LoginActivity extends AppCompatActivity{
 
             }
         });
+=======
+>>>>>>> 76f25a2e7766d027384401fa1a43e140e4638601
  //       if (mAuth.getCurrentUser() != null) {
  //           Intent intent = new Intent(getApplication(), MainActivity.class);
  //           startActivity(intent);
