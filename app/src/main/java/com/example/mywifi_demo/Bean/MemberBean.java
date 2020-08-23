@@ -10,5 +10,6 @@ public class MemberBean implements Serializable {
     public String memName;
     public String membirth;
     public String memphone;
+    public String memgender;
     public boolean isAdmin = false;
 }
