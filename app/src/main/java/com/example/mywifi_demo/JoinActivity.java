@@ -102,7 +102,7 @@ public class JoinActivity extends AppCompatActivity {
                                 //해쉬맵 테이블을 파이어베이스 데이터베이스에 저장
                                 HashMap<Object,String> hashMap = new HashMap<>();
 
-                                hashMap.put("uid",uid);
+                                //hashMap.put("uid",uid);
                                 hashMap.put("email",email);
                                 hashMap.put("name",name);
                                 hashMap.put("birth",birth);
@@ -112,7 +112,7 @@ public class JoinActivity extends AppCompatActivity {
 
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                                 DatabaseReference reference = database.getReference("Users");
-                                reference.child(uid).setValue(hashMap);
+                                reference.child(id).setValue(hashMap);
 
 
                                 //가입이 이루어져을시 가입 화면을 빠져나감.
