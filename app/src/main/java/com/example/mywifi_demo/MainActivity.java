@@ -46,19 +46,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText edit_birth;
     EditText edit_cmkg;
 
-<<<<<<< HEAD
+
    private String id;
    private String name;
    private Long birth;
    private String gender = "";
    private String cmkg;
-=======
-    String id;
-    String name;
-    Long birth;
-    String gender = "";
-    String cmkg;
->>>>>>> 76f25a2e7766d027384401fa1a43e140e4638601
+
+
+
 //    String sort = "id";
 
     ArrayAdapter<String> arrayAdapter;
@@ -107,19 +103,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
     public void setInsertMode() {
-<<<<<<< HEAD
+
         edit_id.setText("ID");
         edit_name.setText("NAME");
         edit_birth.setText("BIRTH");
         edit_gender.setText("FEMALE/MALE");
         edit_cmkg.setText("cm/kg");
-=======
+
        edit_id.setText("");
         edit_name.setText("");
         edit_birth.setText("");
         edit_gender.setText("");
         edit_cmkg.setText("");
->>>>>>> 76f25a2e7766d027384401fa1a43e140e4638601
+
         btn_Insert.setEnabled(true);
         btn_Update.setEnabled(false);
     }
@@ -165,11 +161,9 @@ public void onClick(View v){
                 cmkg=edit_cmkg.getText().toString();
                 if(!IsExistID()){
                     postFirebaseDatabase(true);
-<<<<<<< HEAD
-//                    getFirebaseDatabase();
-=======
+
                   //  getFirebaseDatabase();
->>>>>>> 76f25a2e7766d027384401fa1a43e140e4638601
+
                     setInsertMode();
                 }else{
                     Toast.makeText(MainActivity.this, "이미 존재하는 ID, 사용불가", Toast.LENGTH_SHORT).show();
@@ -192,10 +186,7 @@ public void onClick(View v){
                 edit_id.setCursorVisible(true);
                 break;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 76f25a2e7766d027384401fa1a43e140e4638601
         }
 }
 }
