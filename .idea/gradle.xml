@@ -7,6 +7,10 @@
         <option name="testRunner" value="PLATFORM" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+<<<<<<< HEAD
+        <option name="gradleHome" value="C:/Grandle/gradle-5.5-bin/gradle-5.5" />
+=======
+>>>>>>> 76f25a2e7766d027384401fa1a43e140e4638601
         <option name="gradleJvm" value="1.8" />
         <option name="modules">
           <set>
