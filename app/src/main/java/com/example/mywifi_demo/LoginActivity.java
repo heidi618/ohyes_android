@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity{
         setContentView(R.layout.activity_login);
 
         TextView tvContents = (TextView)findViewById(R.id.tv_contents);
-        ImageView ivGlide = (ImageView)findViewById(R.id.iv_glide);
+//        ImageView ivGlide = (ImageView)findViewById(R.id.iv_glide);
         signInButton = findViewById(R.id.signInButton);
 
         //Glide

@@ -6,17 +6,23 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,7 +48,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button btn_Insert;
     EditText edit_id;
     EditText edit_name;
-    EditText edit_gender;
+    CheckBox check_Male;
+    CheckBox check_Female;
     EditText edit_birth;
     EditText edit_cmkg;
 
@@ -74,7 +81,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         edit_id = (EditText) findViewById(R.id.edit_id);
         edit_name = (EditText) findViewById(R.id.edit_name);
         edit_birth = (EditText) findViewById(R.id.edit_birth);
-        edit_gender = (EditText) findViewById(R.id.edit_gender);
+        check_Male=(CheckBox) findViewById(R.id.check_male);
+        check_Male.setOnClickListener(this);
+        check_Female=(CheckBox) findViewById(R.id.check_female);
+        check_Female.setOnClickListener(this);
         edit_cmkg = (EditText) findViewById(R.id.edit_cmkg);
 
         btn_Insert.setEnabled(true);
@@ -98,26 +108,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
     }
+
     public void setInsertMode() {
         edit_id.setText("ID");
         edit_name.setText("NAME");
         edit_birth.setText("BIRTH");
-        edit_gender.setText("FEMALE/MALE");
+        check_Male.setChecked(false);
+        check_Female.setChecked(false);
         edit_cmkg.setText("cm/kg");
         btn_Insert.setEnabled(true);
         btn_Update.setEnabled(false);
     }
 
-    public boolean IsExistID(){
+    public boolean IsExistID() {
         boolean IsExist = arrayIndex.contains(id);
         return IsExist;
     }
 
-    public void postFirebaseDatabase(boolean add){
+    public void postFirebaseDatabase(boolean add) {
         mPostReference = FirebaseDatabase.getInstance().getReference();
         Map<String, Object> childUpdates = new HashMap<>();
         Map<String, Object> postValues = null;
-        if(add){
+        if (add) {
             FirebasePost post = new FirebasePost(id, name, birth, gender, cmkg);
             postValues = post.toMap();
         }
@@ -125,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mPostReference.updateChildren(childUpdates);
     }
 
-///////////////////////////////////갤러리 접근/////////////////////////////////
+    ///////////////////////////////////갤러리 접근/////////////////////////////////
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -138,20 +150,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
     }
-///////////////////////////////////////////////////////////////////////////////
-public void onClick(View v){
-        switch (v.getId()){
+
+    ///////////////////////////////////////////////////////////////////////////////
+    public void onClick(View v) {
+        switch (v.getId()) {
             case R.id.btn_insert:
-                id=edit_id.getText().toString();
-                name=edit_name.getText().toString();
-                birth=Long.parseLong(edit_birth.getText().toString());
-                gender=edit_gender.getText().toString();
-                cmkg=edit_cmkg.getText().toString();
-                if(!IsExistID()){
+                id = edit_id.getText().toString();
+                name = edit_name.getText().toString();
+                birth = Long.parseLong(edit_birth.getText().toString());
+//                gender = edit_gender.getText().toString();
+                cmkg = edit_cmkg.getText().toString();
+                if (!IsExistID()) {
                     postFirebaseDatabase(true);
-//                    getFirebaseDatabase();
+                    getFirebaseDatabase();
                     setInsertMode();
-                }else{
+                } else {
                     Toast.makeText(MainActivity.this, "이미 존재하는 ID, 사용불가", Toast.LENGTH_SHORT).show();
                 }
                 edit_id.requestFocus();
@@ -159,21 +172,72 @@ public void onClick(View v){
                 break;
 
             case R.id.btn_update:
-                id=edit_id.getText().toString();
-                name=edit_name.getText().toString();
-                birth=Long.parseLong(edit_birth.getText().toString());
-                gender=edit_gender.getText().toString();
-                cmkg=edit_cmkg.getText().toString();
+                id = edit_id.getText().toString();
+                name = edit_name.getText().toString();
+                birth = Long.parseLong(edit_birth.getText().toString());
+//                gender = edit_gender.getText().toString();
+                cmkg = edit_cmkg.getText().toString();
                 postFirebaseDatabase(true);
-//                getFirebaseDatabase();
+                getFirebaseDatabase();
                 setInsertMode();
                 edit_id.setEnabled(true);
                 edit_id.requestFocus();
                 edit_id.setCursorVisible(true);
                 break;
 
+            case R.id.check_female:
+                check_Male.setChecked(false);
+                gender = "Woman";
+                break;
+
+            case R.id.check_male:
+                check_Female.setChecked(false);
+                gender = "Man";
+                break;
+
         }
-}
+    }
+
+    public void getFirebaseDatabase() {
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.e("getFirebaseDatabase", "key: " + dataSnapshot.getChildrenCount());
+                arrayData.clear();
+                arrayIndex.clear();
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    String key = postSnapshot.getKey();
+                    FirebasePost get = postSnapshot.getValue(FirebasePost.class);
+                    String[] info = {get.id, get.name, String.valueOf(get.birth), get.gender};
+                    String Result = setTextLength(info[0], 10) + setTextLength(info[1], 10) + setTextLength(info[2], 10) + setTextLength(info[3], 10);
+                    arrayData.add(Result);
+                    arrayIndex.add(key);
+                    Log.d("getFirebaseDatabase", "key: " + key);
+                    Log.d("getFirebaseDatabase", "info: " + info[0] + info[1] + info[2] + info[3]);
+                }
+                arrayAdapter.clear();
+                arrayAdapter.addAll(arrayData);
+                arrayAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w("getFirebaseDatabase", "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+//        Query sortbyAge = FirebaseDatabase.getInstance().getReference().child("id_list").orderByChild(sort);
+//        sortbyAge.addListenerForSingleValueEvent(postListener);
+    }
+
+    public String setTextLength(String text, int length) {
+        if (text.length() < length) {
+            int gap = length - text.length();
+            for (int i = 0; i < gap; i++) {
+                text = text + " ";
+            }
+        }
+        return text;
+    }
 }
 
 //    private void initDatabase() {
@@ -181,6 +245,4 @@ public void onClick(View v){
 //
 //        mReference = mDatabase.getReference("log");
 //        mReference.child("log").setValue("check");
- //   }
-
-
+//   }
