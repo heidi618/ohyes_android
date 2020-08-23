@@ -76,7 +76,7 @@ public class JoinActivity extends AppCompatActivity {
     public void uploadMember(MemberBean memberBean){
         //Firebase 데이터베이스에 메모를 등록한다.
         DatabaseReference dbRef = mFirebaseDatabase.getReference();
-        dbRef.child("Users").child( memberBean.memId ).setValue(memberBean);
+        dbRef.child("Users").child( memberBean.memName ).setValue(memberBean);
         //파이어 베이스 인증
         firebaseAuthWithGoogle(IdToken);
     }
