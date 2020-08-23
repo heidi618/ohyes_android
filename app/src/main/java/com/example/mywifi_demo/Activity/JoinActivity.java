@@ -39,7 +39,7 @@ public class JoinActivity extends AppCompatActivity {
     private String email;
     private String IdToken;
     private String mgender;
-    private int gender = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
