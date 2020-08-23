@@ -1,11 +1,11 @@
-package com.example.mywifi_demo;
+package com.example.mywifi_demo.Adapter;
 
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.example.mywifi_demo.MemberBean;
+import com.example.mywifi_demo.Bean.MemberBean;
 
 import java.util.List;
 

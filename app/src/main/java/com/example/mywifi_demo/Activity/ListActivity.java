@@ -1,8 +1,10 @@
-package com.example.mywifi_demo;
+package com.example.mywifi_demo.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.mywifi_demo.R;
 
 public class ListActivity extends AppCompatActivity {
 

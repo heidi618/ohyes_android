@@ -1,9 +1,10 @@
-package com.example.mywifi_demo;
+package com.example.mywifi_demo.Database;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
+import com.example.mywifi_demo.Bean.MemberBean;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

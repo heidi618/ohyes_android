@@ -1,10 +1,13 @@
-package com.example.mywifi_demo;
+package com.example.mywifi_demo.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Handler;
 import android.os.Message;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.example.mywifi_demo.IntroThread;
+import com.example.mywifi_demo.R;
 
 public class IntroActivity extends AppCompatActivity {
 

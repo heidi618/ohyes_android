@@ -1,4 +1,4 @@
-package com.example.mywifi_demo;
+package com.example.mywifi_demo.Bean;
 
 import java.io.Serializable;
 import java.lang.reflect.Member;
