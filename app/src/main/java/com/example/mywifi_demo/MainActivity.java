@@ -70,9 +70,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-//        getdbt = (Button) findViewById(R.id.output);
-//        editdt = (EditText) findViewById(R.id.edit_id);
         imageview = (ImageView) findViewById(R.id.imageView);
         btn_Insert = (Button) findViewById(R.id.btn_insert);
         btn_Insert.setOnClickListener(this);
@@ -110,12 +107,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void setInsertMode() {
-        edit_id.setText("ID");
-        edit_name.setText("NAME");
-        edit_birth.setText("BIRTH");
+        edit_id.setText("");
+        edit_name.setText("");
+        edit_birth.setText("");
         check_Male.setChecked(false);
         check_Female.setChecked(false);
-        edit_cmkg.setText("cm/kg");
+        edit_cmkg.setText("");
         btn_Insert.setEnabled(true);
         btn_Update.setEnabled(false);
     }
@@ -187,12 +184,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.check_female:
                 check_Male.setChecked(false);
-                gender = "Woman";
+                gender = "Female";
                 break;
 
             case R.id.check_male:
                 check_Female.setChecked(false);
-                gender = "Man";
+                gender = "Male";
                 break;
 
         }
