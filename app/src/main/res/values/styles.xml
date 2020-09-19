@@ -1,10 +1,25 @@
 <resources>
+    <color name="color_default">#C8E1D5</color>
+    <color name="dark">#5E9783</color>
+    <color name="light">#E4E9EE</color>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">#C8E1D5</item>
+        <item name="colorPrimaryDark">#5E9783</item>
+        <item name="colorAccent">#E4E9EE</item>
+
+
+        <!-- No Title Bar-->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!--상태바 숨기기-->
+        <item name="android:windowFullscreen">true</item>
+        <!--배경색-->
+        <item name="android:background">@color/color_default</item>
+
+
+
     </style>
 
 </resources>
