@@ -15,10 +15,9 @@
         <item name="windowNoTitle">true</item>
         <!--상태바 숨기기-->
         <item name="android:windowFullscreen">true</item>
-        <!--배경색-->
+        <!--배경색
         <item name="android:background">@color/color_default</item>
-
-
+-->
 
     </style>
 
