@@ -19,6 +19,7 @@ public class inputSeonsorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_seonsor);
         Button btn_connect = (Button) findViewById(R.id.btn_connect);
+        Button btn_save = (Button)findViewById(R.id.btn_save);
         Spinner spinner = (Spinner)findViewById(R.id.spin_sensor);
         final TextView txt_sensor=(TextView)findViewById(R.id.txt_sensor);
         TextView txt_sensing=(TextView)findViewById(R.id.txt_sensing);
