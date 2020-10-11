@@ -78,14 +78,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
             }
         });
+  //      container=(LinearLayout) findViewById(R.id.container);
+
         Button btn_list = (Button) findViewById(R.id.btn_list);
         btn_list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LayoutInflater inflater = (LayoutInflater)
-                        getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                inflater.inflate(R.layout.userlist,container,true);
-
+                Intent intent= new Intent(getApplicationContext(), ListActivity.class);
+                startActivityForResult(intent, 101);
             }
         });
 
