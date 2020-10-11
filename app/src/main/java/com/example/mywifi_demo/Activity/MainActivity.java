@@ -70,7 +70,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         container=(LinearLayout) findViewById(R.id.container);
-
+        Button btn_gophysic = (Button) findViewById(R.id.btn_gophysic);
+        btn_gophysic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,physicInfoActivity.class);
+                startActivity(intent);
+            }
+        });
         Button btn_list = (Button) findViewById(R.id.btn_list);
         btn_list.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 LayoutInflater inflater = (LayoutInflater)
                         getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 inflater.inflate(R.layout.userlist,container,true);
+
             }
         });
 

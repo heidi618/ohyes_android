@@ -2,9 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mywifi_demo">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/icon_final"
@@ -12,7 +9,10 @@
         android:roundIcon="@mipmap/icon_final_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.ListActivity"></activity>
+        <activity android:name=".Activity.inputCertificate"></activity>
+        <activity android:name=".Activity.inputSeonsorActivity" />
+        <activity android:name=".Activity.physicInfoActivity" />
+        <activity android:name=".Activity.ListActivity" />
         <activity android:name=".Activity.JoinActivity" />
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.IntroActivity">
@@ -24,5 +24,12 @@
         </activity>
         <activity android:name=".Activity.MainActivity" />
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.hardware.camera"
+        android:required="true"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
