@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sensor">
+        <item>센서를 선택해 주세요</item>
+        <item>초음파</item>
+        <item>심장박동</item>
+        <item>체온</item>
+        <item>산소포화도</item>
+    </string-array>
+</resources>

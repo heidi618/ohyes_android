@@ -6,4 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".Activity.inputSeonsorActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="센서정보 입력"
+            android:textSize="50sp" />
+
+        <Button
+            android:id="@+id/btn_connect"
+            android:entries="@array/sensor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="센서 연결하기" />
+
+        <Spinner
+            android:id="@+id/spin_sensor"
+            android:entries="@array/sensor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:id="@+id/txt_sensor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/txt_sensing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

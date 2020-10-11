@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".Activity.inputCertificate">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/ImageContainer"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="#ffffff">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/sample4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이미지" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_setimg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="사진 가져오기" />
+
+        <RelativeLayout
+            android:id="@+id/OCRButtonContainer"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_below="@id/ImageContainer"
+            android:background="#166e78"
+            android:clickable="true"
+            android:onClick="processImage">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:clickable="true"
+                android:text="RUN OCR"
+                android:textColor="#ffffff"
+                android:textSize="18dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/OCRButtonContainer"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/OCRTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:background="#fff"
+                android:text="여기에 결과 출력됩니다."
+                android:textColor="#169cdf"
+                android:textSize="20dp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
