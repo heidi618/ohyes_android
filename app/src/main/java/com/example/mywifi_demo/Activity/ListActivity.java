@@ -20,8 +20,6 @@ public class ListActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 Intent intent = new Intent();
                 setResult(Activity.RESULT_OK, intent);
                 finish();

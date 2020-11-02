@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //    private ListView listView;
 //    private ArrayAdapter<String> adapter;
 
-    Button btn_Update;
+    Button btn_list;
     Button btn_Insert;
     EditText edit_id;
     EditText edit_name;
@@ -93,8 +93,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imageview = (ImageView) findViewById(R.id.imageView);
         btn_Insert = (Button) findViewById(R.id.btn_insert);
         btn_Insert.setOnClickListener(this);
-        btn_Update = (Button) findViewById(R.id.btn_update);
-        btn_Update.setOnClickListener(this);
+ //       btn_Update = (Button) findViewById(R.id.btn_update);
+ //       btn_Update.setOnClickListener(this);
         edit_id = (EditText) findViewById(R.id.edit_id);
         edit_name = (EditText) findViewById(R.id.edit_name);
         edit_birth = (EditText) findViewById(R.id.edit_birth);
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         check_Female.setChecked(false);
         edit_cmkg.setText("");
         btn_Insert.setEnabled(true);
-        btn_Update.setEnabled(false);
+ //       btn_Update.setEnabled(false);
     }
 
     public boolean IsExistID() {
@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 edit_id.setCursorVisible(true);
                 break;
 
-            case R.id.btn_update:
+ /*           case R.id.btn_list:
                 id = edit_id.getText().toString();
                 name = edit_name.getText().toString();
                 birth = Long.parseLong(edit_birth.getText().toString());
@@ -196,7 +196,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 edit_id.setEnabled(true);
                 edit_id.requestFocus();
                 edit_id.setCursorVisible(true);
-                break;
+                break;*/
 
             case R.id.check_female:
                 check_Male.setChecked(false);
