@@ -45,6 +45,9 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     //ocr
     implementation 'com.rmtheis:tess-two:5.4.1'
+    //bluetooth
+    implementation 'com.akexorcist:bluetoothspp:1.0.0'
+
 
 }
 apply plugin: 'com.google.gms.google-services'

@@ -41,7 +41,7 @@ public class inputCertificate extends AppCompatActivity {
         Button btn_setimg = (Button)findViewById(R.id.btn_setimg);
 
 
-    //이미지 디코딩을 위한 초기화
+     //이미지 디코딩을 위한 초기화
         image = BitmapFactory.decodeResource(getResources(), R.drawable.sample4); //샘플이미지파일
         //언어파일 경로
         datapath = getFilesDir()+ "/tesseract/";
@@ -56,7 +56,7 @@ public class inputCertificate extends AppCompatActivity {
         mTess.init(datapath, lang);
 
 
-    }
+    }//oncreate 끝
 
 
 

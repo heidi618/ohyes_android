@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">MyWiFi-demo</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="maindi">주 질병을 입력해 주세요</string>
+    <string name="subdi">부 질병을 입력해 주세요</string>
+    <string name="dinum">질병 분류번호를 입력해 주세요</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

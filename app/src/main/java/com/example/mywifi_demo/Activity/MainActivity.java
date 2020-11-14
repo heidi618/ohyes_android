@@ -2,14 +2,11 @@ package com.example.mywifi_demo.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -20,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.mywifi_demo.FirebasePost;
 import com.example.mywifi_demo.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private DatabaseReference mPostReference;
 //    private ListView listView;
 //    private ArrayAdapter<String> adapter;
+
+
 
     Button btn_list;
     Button btn_Insert;
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
 
-        imageview = (ImageView) findViewById(R.id.imageView);
+        imageview = (ImageView) findViewById(R.id.img_cer);
         btn_Insert = (Button) findViewById(R.id.btn_insert);
         btn_Insert.setOnClickListener(this);
  //       btn_Update = (Button) findViewById(R.id.btn_update);

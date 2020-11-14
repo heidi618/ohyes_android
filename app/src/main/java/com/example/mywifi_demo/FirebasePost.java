@@ -14,9 +14,7 @@ public class FirebasePost {
     public String gender;
     public String cmkg;
 
-    public FirebasePost(){
 
-    }
     public FirebasePost(String id, String name, Long birth, String gender, String cmkg) {
         this.id = id;
         this.name = name;
