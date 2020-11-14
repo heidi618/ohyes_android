@@ -4,6 +4,7 @@ import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.CharacterPickerDialog;
@@ -39,8 +40,10 @@ public class JoinActivity extends AppCompatActivity {
     private String email;
     private String IdToken;
     private String mgender;
+    private EditText mCmkg;
 
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +56,7 @@ public class JoinActivity extends AppCompatActivity {
         mName = findViewById(R.id.txt_name);
         mBirth = findViewById(R.id.txt_birth);
         mphone = findViewById(R.id.txt_phone);
+        mCmkg = findViewById(R.id.txt_cmkg);
         mjoinjoinBtn = findViewById(R.id.btn_join_join);
         radioGroup  = (RadioGroup) findViewById(R.id.rg);
 
@@ -85,11 +89,13 @@ public class JoinActivity extends AppCompatActivity {
         //데이터베이스에 저장한다.
 
         memberBean.memId = Utils.getUserIdFromUUID(email);
+        memberBean.Id= mTxtId.getText().toString();
         memberBean.isAdmin = false;
         memberBean.memName = mName.getText().toString();
         memberBean.membirth = mBirth.getText().toString();
         memberBean.memphone = mphone.getText().toString();
         memberBean.memgender= mgender;
+        memberBean.cmkg=mCmkg.getText().toString();
         uploadMember(memberBean);
     }
 

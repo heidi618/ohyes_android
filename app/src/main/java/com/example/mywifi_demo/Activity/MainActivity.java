@@ -2,14 +2,11 @@ package com.example.mywifi_demo.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -31,57 +28,39 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
-    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+/*    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
     private ChildEventListener mChild;
     private final int GET_GALLERY_IMAGE = 200;
     private ImageView imageview;
-    private DatabaseReference mPostReference;
-//    private ListView listView;
-//    private ArrayAdapter<String> adapter;
+    private DatabaseReference mPostReference; */
 
-    Button btn_list;
-    Button btn_Insert;
-    EditText edit_id;
-    EditText edit_name;
-    CheckBox check_Male;
-    CheckBox check_Female;
-    EditText edit_birth;
-    EditText edit_cmkg;
+    Button btn_phy;
 
-    String id;
-    String name;
-    Long birth;
-    String gender = "";
-    String cmkg;
-//    String sort = "id";
-    LinearLayout container;
 
-    ArrayAdapter<String> arrayAdapter;
+  /*  ArrayAdapter<String> arrayAdapter;
 
     static ArrayList<String> arrayIndex = new ArrayList<String>();
-    static ArrayList<String> arrayData = new ArrayList<String>();
+    static ArrayList<String> arrayData = new ArrayList<String>();*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        container=(LinearLayout) findViewById(R.id.container);
-        Button btn_gophysic = (Button) findViewById(R.id.btn_gophysic);
-        btn_gophysic.setOnClickListener(new View.OnClickListener() {
+        Button btn_phy = (Button) findViewById(R.id.btn_phy);
+        btn_phy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,physicInfoActivity.class);
+                Intent intent = new Intent(MainActivity.this, physicInfoActivity.class);
                 startActivity(intent);
             }
         });
-  //      container=(LinearLayout) findViewById(R.id.container);
-
-        Button btn_list = (Button) findViewById(R.id.btn_list);
-        btn_list.setOnClickListener(new View.OnClickListener() {
+/*
+        Button btn_upd = (Button) findViewById(R.id.btn_upd);
+        .setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(getApplicationContext(), ListActivity.class);
@@ -93,28 +72,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imageview = (ImageView) findViewById(R.id.imageView);
         btn_Insert = (Button) findViewById(R.id.btn_insert);
         btn_Insert.setOnClickListener(this);
- //       btn_Update = (Button) findViewById(R.id.btn_update);
- //       btn_Update.setOnClickListener(this);
-        edit_id = (EditText) findViewById(R.id.edit_id);
-        edit_name = (EditText) findViewById(R.id.edit_name);
-        edit_birth = (EditText) findViewById(R.id.edit_birth);
-        check_Male=(CheckBox) findViewById(R.id.check_male);
-        check_Male.setOnClickListener(this);
-        check_Female=(CheckBox) findViewById(R.id.check_female);
-        check_Female.setOnClickListener(this);
-        edit_cmkg = (EditText) findViewById(R.id.edit_cmkg);
-
-//        btn_Insert.setEnabled(true);
-//        btn_Update.setEnabled(false);
-
-//        initDatabase();
-
-//        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, new ArrayList<String>());
-//        listView.setAdapter(adapter);
-
-        //       List<Object> Array = new ArrayList<Object>();
-
-/////////////////기존 단일 데이터 입력시 코드(~200807)//////////////////////////////////
 
 //////////////////이미지를 누르면 사진을 등록하는 코드/////////////////////////////
         imageview.setOnClickListener(new View.OnClickListener() {
@@ -153,8 +110,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         childUpdates.put("/id_list/" + id, postValues);
         mPostReference.updateChildren(childUpdates);
     }
-
-    ///////////////////////////////////갤러리 접근/////////////////////////////////
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -165,8 +120,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             imageview.setImageURI(selectedImageUri);
         }
     }
-
-    ///////////////////////////////////////////////////////////////////////////////
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_insert:
@@ -184,19 +137,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 edit_id.requestFocus();
                 edit_id.setCursorVisible(true);
                 break;
-
- /*           case R.id.btn_list:
-                id = edit_id.getText().toString();
-                name = edit_name.getText().toString();
-                birth = Long.parseLong(edit_birth.getText().toString());
-                cmkg = edit_cmkg.getText().toString();
-                postFirebaseDatabase(true);
-                getFirebaseDatabase();
-                setInsertMode();
-                edit_id.setEnabled(true);
-                edit_id.requestFocus();
-                edit_id.setCursorVisible(true);
-                break;*/
 
             case R.id.check_female:
                 check_Male.setChecked(false);
@@ -238,8 +178,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.w("getFirebaseDatabase", "loadPost:onCancelled", databaseError.toException());
             }
         };
-//        Query sortbyAge = FirebaseDatabase.getInstance().getReference().child("id_list").orderByChild(sort);
-//        sortbyAge.addListenerForSingleValueEvent(postListener);
     }
 
     public String setTextLength(String text, int length) {
@@ -250,6 +188,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         return text;
+    }*/
     }
 }
-
