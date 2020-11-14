@@ -17,13 +17,15 @@ public class physicInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_physic_info);
         Button btn_sensor = (Button) findViewById(R.id.btn_input_sensor);
         Button btn_cert = (Button) findViewById(R.id.btn_input_certificate);
+
         btn_sensor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(physicInfoActivity.this,inputSeonsorActivity.class);
-                startActivity(intent);
+                Intent i = new Intent(physicInfoActivity.this,inputSeonsorActivity.class);
+                startActivity(i);
             }
         });
+
         btn_cert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
