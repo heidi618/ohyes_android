@@ -58,6 +58,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        Button btn_upd = (Button) findViewById(R.id.btn_upd);
+        btn_upd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, UpdateActivity.class);
+                startActivity(intent);
+            }
+        });
 /*
         Button btn_upd = (Button) findViewById(R.id.btn_upd);
         .setOnClickListener(new View.OnClickListener() {
